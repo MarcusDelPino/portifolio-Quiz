@@ -13,7 +13,7 @@ const questaoMock = new QuestaoModel(1, "Melhor Cor?", [
   RespostaModel.certa("Roxo"),
 ])
 
-const BASE_URL = `http://localhost:3000/api`
+const BASE_URL = `projeto-quiz-nine.vercel.app`
 
 export default function Home() {
   const router = useRouter()

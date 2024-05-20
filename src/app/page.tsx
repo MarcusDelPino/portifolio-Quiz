@@ -13,13 +13,13 @@ const questaoMock = new QuestaoModel(1, "Melhor Cor?", [
   RespostaModel.certa("Roxo"),
 ])
 
-const BASE_URL = `projeto-quiz-nine.vercel.app/api`
+const BASE_URL = `http://projeto-quiz-nine.vercel.app/api`
 
 export default function Home() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const [idsQuestoes, setIdsQuestoes] = useState<number[]>([])
-  const [questao, setQuestao] = useState<QuestaoModel>(questaoMock)
+  const [questao, setQuestao] = useState<QuestaoModel | undefined>()
   const [respostasCertas, setRespostasCertas] = useState<number>(0)
 
   const carregarIdsQuestoes = async () => {
@@ -50,7 +50,7 @@ export default function Home() {
     console.log(respostasCertas + (acertou ? 1 : 0))
   }
   const idProximaPergunta = () => {
-    const proximoIndice = idsQuestoes.indexOf(questao.id) + 1
+    const proximoIndice = questao? idsQuestoes.indexOf(questao.id) + 1 : -1;
     return idsQuestoes[proximoIndice]
   }
   const irProximoPasso = () => {
@@ -87,7 +87,7 @@ export default function Home() {
   }
 
   const ultimaPerguntas = () => {
-    const proximoIndice = idsQuestoes.indexOf(questao.id) + 1
+    const proximoIndice = questao? idsQuestoes.indexOf(questao.id) + 1 : -1;
     if (proximoIndice === idsQuestoes.length) {
       return true
     }

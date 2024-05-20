@@ -42,7 +42,7 @@ export default function Questao({
   return (
     
       <div className='flex flex-col items-center'>
-        <div className='flex text-6xl text-white justify-center items-center w-[80%]'>
+        <div className='flex lg:text-6xl md:text-4xl sm:text-1xl text-white justify-center items-center w-[80%]'>
           <Enunciado texto={valor.enunciado} />
         </div>
         <div className='flex justify-center items-center p-2 mt-5'>
